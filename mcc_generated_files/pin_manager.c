@@ -85,20 +85,18 @@ void PIN_MANAGER_Initialize(void)
     //interrupt on change for group IOCAF - flag
     IOCAFbits.IOCAF2 = 0;
     //interrupt on change for group IOCAN - negative
-    IOCANbits.IOCAN2 = 1;
+    IOCANbits.IOCAN2 = 0;
     //interrupt on change for group IOCAP - positive
-    IOCAPbits.IOCAP2 = 0;
+    IOCAPbits.IOCAP2 = 1;
 
 
 
     // register default IOC callback functions at runtime; use these methods to register a custom function
-    IOCAF2_SetInterruptHandler(IOCAF2_DefaultInterruptHandler);
+    //IOCAF2_SetInterruptHandler(IOCAF2_DefaultInterruptHandler);
    
-    // Enable IOCI interrupt 
-    INTCONbits.IOCIE = 1; 
     
 }
-  
+#if 0  
 void PIN_MANAGER_IOC(void)
 {   
 	// interrupt on change for pin IOCAF2
@@ -137,7 +135,7 @@ void IOCAF2_DefaultInterruptHandler(void){
     // add your IOCAF2 interrupt custom code
     // or set custom function using IOCAF2_SetInterruptHandler()
 }
-
+#endif
 /**
  End of File
 */
